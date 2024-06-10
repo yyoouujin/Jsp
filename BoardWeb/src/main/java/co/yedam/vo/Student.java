@@ -14,8 +14,7 @@ public class Student {
 	private Date createDate;
 
 	
-	
-	
+
 	//생성자
 //	
 //	//메소드 getter&setter
