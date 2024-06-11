@@ -13,5 +13,8 @@ public interface StudentMapper {
 	
 	public int deleteStudent(Student student);
 	
+	//단건조회.
+	public Student getStudent(String stdNo);
+	
 	
 }

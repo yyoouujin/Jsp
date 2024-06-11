@@ -30,6 +30,15 @@
   	delete tbl_student
   	where std_no = #{stdNo}
   </delete>
+  
+  
+  
+  <!-- 단건조회 -->
+  <select id="getStudent" parameterType="String" resultType="co.yedam.vo.Student">
+  	select *
+  	from tbl_student
+  	where std_no = #{stdNo}
+  </select>
 
  
 </mapper>
