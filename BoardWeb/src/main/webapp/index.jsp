@@ -8,5 +8,5 @@
 </head>
 <body>
 	<h3>Hello, world</h3>
-	<a href="public/main.jsp">main 페이지로 이동</a>
+	<a href="main.do">main 페이지로 이동</a>
 </body>

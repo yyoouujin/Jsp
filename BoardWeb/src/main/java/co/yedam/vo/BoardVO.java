@@ -18,5 +18,6 @@ public class BoardVO { //ValueObject
 	private int clickCnt;
 	private Date creationDate;
 	
+
 	
 }

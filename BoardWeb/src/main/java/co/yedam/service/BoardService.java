@@ -13,10 +13,14 @@ public interface BoardService {
 	
 	
 	//목록
-	List<BoardVO> boardList();
+	//List<BoardVO> boardList();
+	List<BoardVO> boardList(int page);
+	
+	int boardTotal();
 	
 	//단건조회
 	BoardVO getBoard(int bno);
+	
 	
 	//등록
 	boolean addBoard(BoardVO bvo);

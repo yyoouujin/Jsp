@@ -5,14 +5,54 @@
   
 <mapper namespace="co.yedam.mapper.BoardMapper">
 
+	<!-- 목록출력 -->
 	<select id="boardList" resultType="co.yedam.vo.BoardVO">
 	select *
 	from board_tbl
 	order by board_no
 	</select>
 	
-	<insert id="insertBoard">
 	
+	<!-- 페이지별로 5건씩 출력 -->
+	<select id="boardListPaging" parameterType="int" resultType="co.yedam.vo.BoardVO">
+	select b.*
+	from (select rownum rn, a.*
+	      from (select *
+	            from board_tbl
+	            order by board_no) a
+	      <![CDATA[
+	      where rownum <= (#{page} * 5) ) b 
+	      ]]>
+	      
+	where b.rn > (#{page} - 1) * 5
+	</select>
+	<!-- CDATA : 비교연산자임을 알려줌 (안에 들어있는 데이터가 파싱되지 않게 해줌 = Character Data : 문자데이터임을 알림)  -->
+	
+	<select id="getTotalCnt" resultType="int">
+	select count(1)
+	from board_tbl
+	</select>
+	
+	
+	
+	
+	<!-- 단건조회 -->
+	<select id="selectBoard" parameterType="int" resultType="co.yedam.vo.BoardVO">
+	select board_no,
+			title,
+			content,
+			writer,
+			click_cnt,
+			creation_date
+	from board_tbl
+	where board_no = #{bno}
+	</select>
+	
+	
+	
+	<insert id="insertBoard" parameterType="String">
+	insert into board_tbl (board_no, title, content, writer)
+	values (board_seq.nextval, #{title}, #{content}, #{writer})
 	</insert>
 	
 	

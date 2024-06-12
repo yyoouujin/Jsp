@@ -11,11 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.common.Control;
+import co.yedam.web.AddBoard;
 import co.yedam.web.AddStudent;
 import co.yedam.web.BoardList;
+import co.yedam.web.GetBoard;
 import co.yedam.web.MainControl;
 import co.yedam.web.ProductControl;
 import co.yedam.web.StudentForm;
+import co.yedam.web.addForm;
 //front -> 요청url(*.do) - 실행컨트롤 매칭.
 //모든 작업이 거쳐가는곳 = frontcontroll
 public class FrontController extends HttpServlet {
@@ -44,6 +47,13 @@ public class FrontController extends HttpServlet {
 		
 		//게시글목록.
 		map.put("/boardList.do", new BoardList());
+		
+		//상세화면
+		map.put("/getBoard.do", new GetBoard());
+		
+		//게시글등록.
+		map.put("/addForm.do", new addForm());
+		map.put("/addBoard.do", new AddBoard());
 		
 		
 	}
