@@ -8,6 +8,8 @@
  <%
  BoardVO board = (BoardVO) request.getAttribute("board");
  String paging = (String) request.getAttribute("page");
+ int boardno = board.getBoardNo();
+ 
  //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
  SimpleDateFormat sdf = new SimpleDateFormat("yyyy년MM월dd일 HH시mm분ss초");
  String yyyymmdd = sdf.format(board.getCreationDate());
@@ -45,9 +47,8 @@
  	
  </table>
  
- <a href="boardList.do?page=<%=paging %>">목록으로 이동하기</a>
- 
- 
+<a href="boardList.do?page=<%=paging %>">목록으로 이동하기</a>
+<a href="removeForm.do?bno=<%=boardno %>">삭제화면으로 이동</a> 
 
  
 <!-- 

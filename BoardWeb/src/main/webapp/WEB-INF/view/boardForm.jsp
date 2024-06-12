@@ -29,7 +29,4 @@
 
 
 
-
-
-
 <%@include file="../Public/footer.jsp" %>

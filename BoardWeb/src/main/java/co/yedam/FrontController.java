@@ -19,6 +19,8 @@ import co.yedam.web.MainControl;
 import co.yedam.web.ProductControl;
 import co.yedam.web.StudentForm;
 import co.yedam.web.addForm;
+import co.yedam.web.removeBoard;
+import co.yedam.web.removeForm;
 //front -> 요청url(*.do) - 실행컨트롤 매칭.
 //모든 작업이 거쳐가는곳 = frontcontroll
 public class FrontController extends HttpServlet {
@@ -55,6 +57,9 @@ public class FrontController extends HttpServlet {
 		map.put("/addForm.do", new addForm());
 		map.put("/addBoard.do", new AddBoard());
 		
+		//게시글삭제
+		map.put("/removeForm.do", new removeForm()); //삭제화면구현
+		map.put("/removeBoard.do", new removeBoard()); //삭제기능구현
 		
 	}
 	
