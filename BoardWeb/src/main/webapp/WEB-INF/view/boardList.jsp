@@ -7,7 +7,8 @@
 
 <!-- "boardList"에 담긴 값을 읽어서 반복처리 -->
 
-<%@include file="../Public/header.jsp" %>
+
+<jsp:include page="../Public/header.jsp" />
 
 
 <style>
@@ -113,4 +114,5 @@
 </div>
 -->
 
-<%@include file="../Public/footer.jsp" %>
+
+<jsp:include page="../Public/footer.jsp" />

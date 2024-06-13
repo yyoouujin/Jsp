@@ -12,6 +12,8 @@
 	 비율로 움직이게 해줌
 	 submit일 경우 form action 실행
 	 -->
+	 
+	 
 <form name="myFrm" action="removeForm.do">
 
 	<input type="hidden" value="${board.boardNo }" name="bno">
@@ -59,8 +61,6 @@
 
 	</table>
 
-</form>
-
 
 <a href="boardList.do?page=${page }" class="btn btn-success" colspan="3">목록으로 이동하기</a>
 
@@ -76,6 +76,7 @@
 </script>
 
 
+</form>
 
 
 

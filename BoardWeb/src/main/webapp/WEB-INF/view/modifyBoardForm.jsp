@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<%@include file="../Public/header.jsp" %>
+<jsp:include page="../Public/header.jsp" />
 
 <h3>수정화면</h3>
 <p>${board }</p>
@@ -23,7 +23,6 @@
  		<th>글번호</th>
  		<td><input type="text" class="form-control" readonly value="${board.boardNo }" name="bno">
  		</td>
- 		<th>조회수</th><td><%=board.getClickCnt() %></td>
  		<th>조회수</th><td><c:out value="${board.clickCnt }" /></td>
  	</tr>
  	<tr>
@@ -34,14 +33,14 @@
  	<tr>
  		<th>내용</th>
  		<td colspan="3">
- 		<textarea name = "content">${board.content }</textarea>
+ 		<textarea name = "content"><c:out value="${board.content }" /></textarea>
  		</td>
  	</tr>
  	<tr>
  		<th>작성자</th>
  		<td><c:out value="${board.writer }" /></td>
  		<th>작성일시</th>
- 		<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value=${board.creationDate } /></td>
+ 		<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${board.creationDate }" /></td>
  	</tr>
  	<tr>
  	<td colspan="4"><input class="btn btn-warning" type="submit" value="수정하기"></td>
@@ -52,4 +51,4 @@
 </form>
 
 
-<%@include file="../Public/footer.jsp" %>
+<jsp:include page="../Public/footer.jsp" />

@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@include file="../Public/header.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+
+<jsp:include page="../Public/header.jsp" />
 
 <h3>게시글등록화면</h3>
 
 
 
 
-<form action = "addBoard.do">
+<form name = "myFrm" action="addBoard.do">
 
 	<table class="table">
 		<tr>
@@ -27,6 +29,4 @@
 	
 </form>
 
-
-
-<%@include file="../Public/footer.jsp" %>
+<jsp:include page="../Public/footer.jsp" />

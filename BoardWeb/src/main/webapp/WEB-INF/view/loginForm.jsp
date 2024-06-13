@@ -1,18 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib tagdir="/WEB-INF/tags/" prefix="cust" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="cust" %>
 
 
 <!--
 url = "태그 라이브러리의 네임 스페이스 URI 식별자"
 prefix = "태그를 사용할때 태그 이름 앞에 붙일 접두사"
 -->
-  
+
 
 <jsp:include page="../Public/header.jsp" />
 <h3>로그인화면(loginForm.jsp)</h3>
-<cust:line/>
+<cust:line />
 
 
 
@@ -25,7 +25,8 @@ prefix = "태그를 사용할때 태그 이름 앞에 붙일 접두사"
 <!--
 로그인 (버튼) 실행 시 - Login.do 페이지로 이동!
 -->
-<form action = "Login.do">
+
+<form name="myFrm" action="Login.do">
 
 	<table class="table">
 	<tr>
@@ -39,7 +40,7 @@ prefix = "태그를 사용할때 태그 이름 앞에 붙일 접두사"
 	</tr>
 	</table>
 	
-</form>
 
+</form>
 
 <jsp:include page="../Public/footer.jsp"/>
