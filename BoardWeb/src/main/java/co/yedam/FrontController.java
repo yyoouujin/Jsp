@@ -15,7 +15,12 @@ import co.yedam.web.AddBoard;
 import co.yedam.web.AddStudent;
 import co.yedam.web.BoardList;
 import co.yedam.web.GetBoard;
+import co.yedam.web.LoginControl;
+import co.yedam.web.LoginForm;
+import co.yedam.web.LogoutControl;
 import co.yedam.web.MainControl;
+import co.yedam.web.ModifyBoard;
+import co.yedam.web.ModifyForm;
 import co.yedam.web.ProductControl;
 import co.yedam.web.StudentForm;
 import co.yedam.web.addForm;
@@ -61,6 +66,20 @@ public class FrontController extends HttpServlet {
 		map.put("/removeForm.do", new removeForm()); //삭제화면구현
 		map.put("/removeBoard.do", new removeBoard()); //삭제기능구현
 		
+		
+		//수정화면
+		map.put("/modifyForm.do", new ModifyForm()); //수정화면구현
+		//수정처리
+		map.put("/modifyBoard.do", new ModifyBoard()); //수정기능구현
+		
+		
+		//로그인화면
+		map.put("/loginForm.do", new LoginForm());
+		//로그인기능
+		map.put("/Login.do", new LoginControl());
+		//로그아웃기능
+		map.put("/Logout.do", new LogoutControl());
+		
 	}
 	
 	
@@ -74,7 +93,6 @@ public class FrontController extends HttpServlet {
 //		System.out.println("context : " + context);
 		String page = uri.substring(context.length()); //어떤 페이지를 요청하고있는지
 //		System.out.println("page : " + page);
-		
 		//String result = map.get(page);
 		//System.out.println("result : " + result);
 		Control result = map.get(page); //MainControl을 구현하는 객체를 result 에 담아서 반환!

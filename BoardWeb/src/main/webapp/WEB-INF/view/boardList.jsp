@@ -3,6 +3,8 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!-- "boardList"에 담긴 값을 읽어서 반복처리 -->
 
 <%@include file="../Public/header.jsp" %>
@@ -37,18 +39,6 @@
 </style>
 
 
-
-
-
-<%
-//request는 jsp의 내장객체
-List<BoardVO> list = (List<BoardVO>)request.getAttribute("boardList");
-PageDTO pageDTO = (PageDTO) request.getAttribute("paging");
-%>
-
-<p><%=pageDTO %></p>
-
-
 <h3>게시글 목록</h3>
 
 <table class="table">
@@ -58,14 +48,15 @@ PageDTO pageDTO = (PageDTO) request.getAttribute("paging");
 		</tr>
 	</thead>
 	<tbody>
-		<% for (BoardVO vo : list) { %>
+		<c:forEach var="vo" items="${boardList }" >
 		<tr>
-			<td><%=vo.getBoardNo() %></td> 
-			<td><a href="getBoard.do?bno=<%=vo.getBoardNo() %>&page=<%=pageDTO.getPage() %>"><%=vo.getTitle()%></a></td>
-			<td><%=vo.getWriter()%></td>
-			<td> <%=vo.getClickCnt()%></td>
+			<td>${vo.boardNo }</td>
+			<td><a href="getBoard.do?bno=${vo.boardNo }&page=${paging.page }"><c:out value="${vo.title }" /></a></td>
+			<td><c:out value="${vo.writer }" /></td>
+			<td><c:out value="${vo.clickCnt }" /></td>
 		</tr>
-		<% } %>
+		</c:forEach>
+		
 	</tbody>
 </table>
 
@@ -77,25 +68,30 @@ PageDTO pageDTO = (PageDTO) request.getAttribute("paging");
 <div class="center">
   <div class="pagination">
   
+  
    	 <!-- 이전페이지 여부 체크! : boolean 타입의 getter 메소드는 is로 시작!-->
-  <%if (pageDTO.isPrev()) {%>
-  <a href="boardList.do?page=<%=pageDTO.getStartPage()-1 %>">&laquo;</a>
-  <%} %>
+  <c:if test="${paging.prev }">
+  	<a href="boardList.do?page=${paging.startPage-1 }">&laquo;</a>
+  </c:if>
   
-  
-  	<!-- 현재페이지 : 초록색으로 표시(active 클래스) if문 사용-->
-  <%for(int p = pageDTO.getStartPage(); p <= pageDTO.getEndPage(); p++){ %>
-  <% if(p == pageDTO.getPage()) {%>
-  <a href="boardList.do?page=<%=p %>" class="active"><%=p %></a>
-  <%} else { %> 
-  <a href="boardList.do?page=<%=p %>"><%=p %></a>
-  <%} }%>
-  
+  	<!-- 현재페이지 : 초록색으로 표시(active 클래스) if문 사용-->  
+  <c:forEach var="p" begin="${paging.startPage }" end="${paging.endPage }" >
+  	<c:choose>
+  		<c:when test="${p == paging.page }">
+  			<a href="boardList.do?page=${p }" class="active"><c:out value="${p }" /></a>
+  		</c:when>
+  		
+  		<c:otherwise>
+  			<a href="boardList.do?page=${p }"><c:out value="${p }" /></a>
+  		</c:otherwise>
+  	</c:choose>
+  </c:forEach>
   
  	 <!-- 이후페이지 여부 체크! -->
-  <%if (pageDTO.isNext()) {%>
-  <a href="boardList.do?page=<%=pageDTO.getEndPage()+1 %>">&raquo;</a>
-  <%} %>
+	<c:if test="${paging.next }">
+  		<a href="boardList.do?page=${paging.endPage+1 }">&raquo;</a>
+  	</c:if>
+  	
   </div>
 </div>
 
@@ -115,9 +111,6 @@ PageDTO pageDTO = (PageDTO) request.getAttribute("paging");
   <a href="#">&raquo;</a>
   </div>
 </div>
- -->
- 
- 
-
+-->
 
 <%@include file="../Public/footer.jsp" %>

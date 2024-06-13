@@ -13,6 +13,9 @@
  BoardWeb/removeBoard.do?boardNo=61
  -->
  
+ <form action="removeBoard.do">
+<input type ="hidden" value="<%=board.getBoardNo() %>" name="bno">
+ 
  <p>삭제페이지 구현화면</p>
  
  <table class="table" class="col-sm-10">
@@ -42,7 +45,7 @@
  </table>
  
  
- 
+ </form>
  
  
  <%@include file="../Public/footer.jsp" %>

@@ -58,16 +58,34 @@
 	
 	
 	
-	<update id="updateBoard">
-	
+	<!--
+	파라미터로 넘어온 값을 바꿔준다 
+	{} 내에 있는 값은 자바영역!
+	-->
+	<update id="updateBoard" parameterType="co.yedam.vo.BoardVO">
+	update board_tbl
+	set title=#{title}, content=#{content}
+	where board_no=#{boardNo}
 	</update>
 	
 	
 	
-	<delete id="deleteBoard" parameterType="int">
+	<delete id="deleteBoard" parameterType="co.yedam.vo.Student">
 	delete board_tbl
 	where board_no = #{bno}
 	</delete>
+	
+	
+	
+	
+	<!-- //회원id, 회원비번 -->
+	<select id="selectMember" resultType="int">
+	select count(1)
+	from member_tbl
+	where user_id = #{id}
+	and user_pw = #{pw}
+	</select>
+	
 	
  
 </mapper>

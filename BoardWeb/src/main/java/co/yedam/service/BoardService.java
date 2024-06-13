@@ -10,8 +10,7 @@ import co.yedam.vo.BoardVO;
 */
 
 public interface BoardService {
-	
-	
+
 	//목록
 	//List<BoardVO> boardList();
 	List<BoardVO> boardList(int page);
@@ -21,7 +20,6 @@ public interface BoardService {
 	//단건조회
 	BoardVO getBoard(int bno);
 	
-	
 	//등록
 	boolean addBoard(BoardVO bvo);
 
@@ -30,5 +28,10 @@ public interface BoardService {
 	
 	//삭제
 	boolean removeBoard(int bno);
+	
+	
+	
+	//checkMember(id,pw)
+	boolean checkMember(String id, String pw);
 
 }
