@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="../Public/header.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    
+<jsp:include page="../Public/header.jsp" />
+
 <h3>학생등록화면</h3>
 
 <%
@@ -8,8 +11,9 @@
 %>
 
 
-
 <!-- 학생등록 화면에서 등록을 하다가 등록이 안 된 값으로  -->
+
+
 <%
 	if (msg != null){
 %>
@@ -18,7 +22,9 @@
 <%} %>
 
 
-<form action="addStudent.do">
+
+
+<form name ="myfrm" action="addStudent.do">
 	<table class="table">
 		<tr>
 			<th>학생번호</th><td><input type="text" name="sno"></td>
@@ -40,6 +46,5 @@
 	</table>
 </form>
 
-<%@include file="../Public/footer.jsp" %>
 
-
+<jsp:include page="../Public/footer.jsp" />

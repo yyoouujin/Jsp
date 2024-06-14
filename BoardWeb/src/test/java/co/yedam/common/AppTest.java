@@ -26,18 +26,26 @@ public class AppTest {
 		
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		
+		SearchVO search = new SearchVO(1, "T", "javascript");
 		
-		List<BoardVO> list = mapper.boardListPaging(3);
-		for(BoardVO bvo : list) {
-			System.out.println(bvo.toString());
-			
-		}
+		mapper.boardListPaging(search)//
+			.forEach(bvo -> System.out.println(bvo));
 		
 		
-		BoardService svc = new BoardServiceImpl();
 		
-		System.out.println(svc.getBoard(100));
-				
+	
+	
+//		List<BoardVO> list = mapper.boardListPaging(3);
+//		for(BoardVO bvo : list) {
+//			System.out.println(bvo.toString());
+//			
+//		}
+//		
+//		
+//		BoardService svc = new BoardServiceImpl();
+//		
+//		System.out.println(svc.getBoard(100));
+//				
 		
 		
 		

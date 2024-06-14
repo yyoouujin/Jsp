@@ -10,7 +10,7 @@ prefix = "태그를 사용할때 태그 이름 앞에 붙일 접두사"
 -->
 
 
-<jsp:include page="../Public/header.jsp" />
+
 <h3>로그인화면(loginForm.jsp)</h3>
 <cust:line />
 
@@ -42,5 +42,3 @@ prefix = "태그를 사용할때 태그 이름 앞에 붙일 접두사"
 	
 
 </form>
-
-<jsp:include page="../Public/footer.jsp"/>

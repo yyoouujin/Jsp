@@ -3,8 +3,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
-<jsp:include page="../Public/header.jsp" />
+ader.jsp" />
 
 <h3>수정화면</h3>
 <p>${board }</p>
@@ -17,6 +16,10 @@
 <!-- action 에는 폼을 처리하는 서버쪽 url을 명시!  -->
 
 <form name ="myfrm" action="modifyBoard.do">
+
+<input type="hidden" value="${page }" name="page">
+<input type="hidden" value="${searchCondition }" name="searchCondition">
+<input type="hidden" value="${keyword }" name="keyword">
 
  <table class="table">
  	<tr>
@@ -51,4 +54,3 @@
 </form>
 
 
-<jsp:include page="../Public/footer.jsp" />

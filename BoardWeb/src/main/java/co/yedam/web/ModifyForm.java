@@ -28,6 +28,20 @@ public class ModifyForm implements Control {
 		req.setAttribute("board", board);
 		
 		
+		
+		//수정후에도 파라미터 값 고정
+		
+		String sc = req.getParameter("searchCondition");
+		String kw = req.getParameter("keyword");
+		String page = req.getParameter("page");
+		
+		
+		req.setAttribute("searchCondition", sc);
+		req.setAttribute("keyword", kw);
+		req.setAttribute("page", page);
+		
+		
+		
 		req.getRequestDispatcher("WEB-INF/view/modifyBoardForm.jsp").forward(req, resp);
 		
 		

@@ -21,7 +21,9 @@ public class addForm implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 게시판등록
 
-		req.getRequestDispatcher("WEB-INF/view/boardForm.jsp").forward(req, resp);
+		//req.getRequestDispatcher("WEB-INF/view/boardForm.jsp").forward(req, resp);
+		req.getRequestDispatcher("board/boardForm.tiles").forward(req, resp);
+		
 		
 	}
 

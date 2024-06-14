@@ -9,8 +9,6 @@
 <p>${board }</p>
 
 
-<jsp:include page="../Public/header.jsp" />
- 
  
  <%
  BoardVO board = (BoardVO) request.getAttribute("board");
@@ -55,4 +53,4 @@
  
 </form>
  
-<jsp:include page="../Public/footer.jsp" />
+ 

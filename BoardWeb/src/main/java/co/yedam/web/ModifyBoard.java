@@ -22,6 +22,9 @@ public class ModifyBoard implements Control {
 		String boardno = req.getParameter("bno");
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
+		String sc = req.getParameter("searchCondition");
+		String kw = req.getParameter("keyword");
+		
 				
 		// editBoard메소드의 매개값.
 		BoardVO bvo = new BoardVO();
@@ -30,10 +33,14 @@ public class ModifyBoard implements Control {
 		bvo.setContent(content);
 		
 		
+		//수정시에도 페이지값고정
+		String page = req.getParameter("page");
+
+		
 		BoardService bvc = new BoardServiceImpl();
 		if(bvc.editBoard(bvo)) {
 			System.out.println("정상수정");
-			resp.sendRedirect("boardList.do");
+			resp.sendRedirect("boardList.do?searchCondition=" +sc + "&keyword=" + kw + "&page=" + page);
 		} else {
 			System.out.println("수정실패");
 			req.getRequestDispatcher("WEB-INF/view/modifyBoardForm.jsp").forward(req, resp);

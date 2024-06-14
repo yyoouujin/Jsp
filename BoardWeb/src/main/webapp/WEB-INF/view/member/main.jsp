@@ -4,7 +4,6 @@
     pageEncoding="UTF-8"%>
 
 <!-- 다른 페이지를 현재 페이지에 삽입 @include -->
-<%@include file="header.jsp" %>
 
 	<h3>main 페이지</h3>
 	
@@ -24,5 +23,3 @@
 		<%} %>
 	</ul>
 	
-
-<%@include file="footer.jsp" %>

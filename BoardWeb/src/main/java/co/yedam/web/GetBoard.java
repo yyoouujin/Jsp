@@ -29,8 +29,18 @@ public class GetBoard implements Control {
 		req.setAttribute("board", brd);
 		req.setAttribute("page", page);
 		
-		req.getRequestDispatcher("WEB-INF/view/board.jsp").forward(req, resp);
 		
+		
+		//수정후에도 파라미터 값 고정
+		String sc = req.getParameter("searchCondition");
+		String kw = req.getParameter("keyword");
+		
+		req.setAttribute("searchCondition", sc);
+		req.setAttribute("keyword", kw);
+		
+		
+		//req.getRequestDispatcher("WEB-INF/view/board.jsp").forward(req, resp);
+		req.getRequestDispatcher("board/board.tiles").forward(req, resp);
 
 		
 	}

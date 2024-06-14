@@ -35,7 +35,8 @@ public class MainControl implements Control {
 		req.setAttribute("student", student);
 		req.setAttribute("studentList", list);
 		
-		req.getRequestDispatcher("WEB-INF/Public/main.jsp")//
+		//req.getRequestDispatcher("WEB-INF/Public/main.jsp")
+		req.getRequestDispatcher("member/main.tiles")//
 		.forward(req, resp); //(HttpServletRequest에서 제공되는)forward 메소드 -> 요청 내용을 다른 자원으로 넘긴다
 	
 	}

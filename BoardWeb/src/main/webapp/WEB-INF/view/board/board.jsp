@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<jsp:include page="../Public/header.jsp" />
 
 <!-- board라는 attribute 값을 읽어오겠습니다! -->
 <p>${board }</p>
@@ -14,9 +13,13 @@
 	 -->
 	 
 	 
+	<!-- value 는 attribute 값을 읽어온다! -->
 <form name="myFrm" action="removeForm.do">
 
+	<input type="hidden" value="${page }" name="page">
 	<input type="hidden" value="${board.boardNo }" name="bno">
+	<input type="hidden" value="${searchCondition }" name="searchCondition">
+	<input type="hidden" value="${keyword }" name="keyword">
 
 	<table class="table" class="col-sm-10">
 		<tr>
@@ -79,5 +82,3 @@
 </form>
 
 
-
-<jsp:include page="../Public/footer.jsp" />
