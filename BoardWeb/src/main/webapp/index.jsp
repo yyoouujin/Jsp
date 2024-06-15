@@ -18,3 +18,4 @@
 	<a href="main.do">main 페이지로 이동</a>
 	 -->
 </body>
+</html>

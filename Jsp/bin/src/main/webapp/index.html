@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<h3>안녕하세요!!</h3>
+<h3>웹 어플리케이션 서버는 톰캣</h3>
+<a href="html/info.jsp">info페이지로 이동</a><br>
+<a href="FirstServlet">First페이지로 이동</a><br>
+<a href="FirstServlet?id=admin&pw=1234">First페이지로 이동</a> 
+
+<form action="html/info.jsp">
+	<label>아이디</label>
+	<input name="id"><br>
+	<input name="pw"><br>
+	<input type="submit">
+</form>
+
+
+
+<form action="FirstServlet" method="post">
+	<label>학생번호</label>
+	<input name="stdNo" required><br>
+	<label>이름</label>
+	<input name="stdName" required><br>
+	<label>연락처</label>
+	<input name="phone" required><br>
+	<label>혈액형</label>
+	<input name="bloodType" required><br>
+	<input type="submit">
+</form>
+
+
+</body>
+</html>
