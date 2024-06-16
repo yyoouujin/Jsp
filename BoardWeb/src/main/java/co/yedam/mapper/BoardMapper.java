@@ -38,5 +38,9 @@ public interface BoardMapper {
 	//@Param 은 database 프로그램 (oracle)의 sql 문장에 파라미터를 전달할 때 전달되는 변수들에 붙여준다
 	//mapper 인터페이스에서 전달하고자 하는 변수명 앞에 @Param 어노테이션을 추가
 	int selectMember(@Param("id") String id, @Param("pw") String pw);
+	
+	
+	
+	
 
 }

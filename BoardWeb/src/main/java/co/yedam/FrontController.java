@@ -15,6 +15,8 @@ import co.yedam.web.AddBoard;
 import co.yedam.web.AddStudent;
 import co.yedam.web.BoardList;
 import co.yedam.web.GetBoard;
+import co.yedam.web.JoinControl;
+import co.yedam.web.JoinForm;
 import co.yedam.web.LoginControl;
 import co.yedam.web.LoginForm;
 import co.yedam.web.LogoutControl;
@@ -73,6 +75,12 @@ public class FrontController extends HttpServlet {
 		map.put("/Login.do", new LoginControl());
 		// 로그아웃기능
 		map.put("/Logout.do", new LogoutControl());
+		
+		//회원가입 화면
+		map.put("/joinForm.do", new JoinForm());
+		//회원가입 기능
+		map.put("/join.do", new JoinControl());
+		
 
 	}
 

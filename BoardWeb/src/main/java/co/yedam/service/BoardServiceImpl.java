@@ -65,5 +65,7 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.selectMember(id, pw) == 1;
 	}
 	
+	
 
-}
+	}
+

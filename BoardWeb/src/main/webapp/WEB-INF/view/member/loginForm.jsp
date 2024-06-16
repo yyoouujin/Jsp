@@ -37,14 +37,20 @@ prefix = "태그를 사용할때 태그 이름 앞에 붙일 접두사"
 	</tr>
 	<tr>
 		<td colspan="1"><input type="submit" class="btn btn-primary" value="로그인"></td>
-		<td colspan="1"><button type="button" class="btn btn-primary">회원가입</button></td>
+		<td colspan="1"><button type="button" class="btn btn-warning">회원가입</button></td>
 	</tr>
 
 	</table>
 	
 	
 <script>
-	document.querySelector('')
+	document.querySelector('button.btn-warning').addEventListener('click', function(e){
+		//로그인 버튼일 경우에는 Login.do
+		//회원가입 버튼일 경우에는 action="joinForm.do"
+		document.forms.myFrm.action = "joinForm.do"
+		document.forms.myFrm.submit();
+	})
+	
 
 </script>
 

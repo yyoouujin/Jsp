@@ -35,5 +35,7 @@ public interface BoardService {
 	
 	//checkMember(id,pw)
 	boolean checkMember(String id, String pw);
+	
+	
 
 }
