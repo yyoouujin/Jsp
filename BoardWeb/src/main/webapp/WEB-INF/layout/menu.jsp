@@ -7,6 +7,7 @@
                 <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
                 <div class="list-group list-group-flush">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="main.do">메인화면</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="studentForm.do">학생정보등록화면</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="boardList.do">게시글목록</a>
                     
                     <c:choose>
