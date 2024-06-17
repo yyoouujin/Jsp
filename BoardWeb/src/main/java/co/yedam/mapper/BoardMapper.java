@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import co.yedam.common.SearchVO;
 import co.yedam.vo.BoardVO;
+import co.yedam.vo.MemberVO2;
 
 /*
 목록, 등록, 수정, 삭제, 단건조회의 기능 구성
@@ -37,7 +38,7 @@ public interface BoardMapper {
 	// @Param -> mapper 내에 값을 전달
 	//@Param 은 database 프로그램 (oracle)의 sql 문장에 파라미터를 전달할 때 전달되는 변수들에 붙여준다
 	//mapper 인터페이스에서 전달하고자 하는 변수명 앞에 @Param 어노테이션을 추가
-	int selectMember(@Param("id") String id, @Param("pw") String pw);
+	MemberVO2 selectMember(@Param("id") String id, @Param("pw") String pw);
 	
 	
 	

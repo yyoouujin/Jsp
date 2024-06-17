@@ -4,6 +4,7 @@ import java.util.List;
 
 import co.yedam.common.SearchVO;
 import co.yedam.vo.BoardVO;
+import co.yedam.vo.MemberVO2;
 
 /*
 목록, 단건조회, 등록, 수정, 삭제기능 (규칙정의)
@@ -34,7 +35,7 @@ public interface BoardService {
 	
 	
 	//checkMember(id,pw)
-	boolean checkMember(String id, String pw);
+	MemberVO2 checkMember(String id, String pw);
 	
 	
 
