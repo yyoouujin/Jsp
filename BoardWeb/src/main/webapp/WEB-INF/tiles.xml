@@ -68,7 +68,6 @@
   </definition>
   
   
-  
   <definition name="WILDCARD:*/*" extends="boardapp">
   	<put-attribute name="body" value="/WEB-INF/view/{1}/{2}.jsp" />
   </definition>

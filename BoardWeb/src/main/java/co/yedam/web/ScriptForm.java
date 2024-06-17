@@ -14,6 +14,7 @@ public class ScriptForm implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		req.getRequestDispatcher("script/js.tiles").forward(req, resp);
+		//이건 곧 /WEB-INF/view/script/js.jsp
 		
 
 	}

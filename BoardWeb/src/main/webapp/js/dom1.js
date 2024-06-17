@@ -51,28 +51,38 @@ document.querySelector('thead input[type="checkbox"]').addEventListener('change'
 document.querySelector('thead input[type="checkbox"]').addEventListener('change', clearAllCheckFunc);
 
 
-	//clearAllCheckFunc 이벤트 처리함수 생성(전체선택해제)
+/*
+
+
+	//clearAllCheckFunc 이벤트 처리함수 생성(하나라도 풀리면 전체선택해제)
 function clearAllCheckFunc(){
 	
-	let checkboxes = document.querySelectorAll('tbody#memberList tr');
-	//전체체크박스개수
-	let totalCnt = checkboxes.length;
-	let checkedCnt = document.querySelectorAll('tbody#memberList tr').checked;
-	
+	//전체체크박스
+	let allcheck = document.querySelector('thead input[type="checkbox"]');
+	/선택된 체크박스
+	let selectcheck = document.querySelector('thead input[type="checkbox"]'.checked);
 	
 	
 } //end of 전체선택해제 메소드
 
+*/
 	
 
 	//allCheckFunc 이벤트 처리함수 생성(전체선택)
 function allCheckFunc(){
 	console.log(this.checked);
 	document.querySelectorAll('tbody#memberList tr').forEach(item => item.children[5].children[0].checked = this.checked);
+	
 	/*
-	document.querySelectorAll('#memberList tr')//
-		.forEach(item => item.children[5].children[0].checked = this.checked);
+	document.querySelectorAll('#memberList tr').forEach(item => item.children[5].children[0].checked = this.checked);
+	
+	let a = 3+1;
+	'tbody#memberList tr' 에 있는 
+	const item = (item.child) {
+		return item.children[5].children[0].checked = this.checked
+	}
 	*/
+	
 }
 
 
