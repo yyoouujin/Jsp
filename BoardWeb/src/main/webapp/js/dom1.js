@@ -51,9 +51,8 @@ document.querySelector('thead input[type="checkbox"]').addEventListener('change'
 document.querySelector('thead input[type="checkbox"]').addEventListener('change', clearAllCheckFunc);
 
 
+	//나만의 싸움,,
 /*
-
-
 	//clearAllCheckFunc 이벤트 처리함수 생성(하나라도 풀리면 전체선택해제)
 function clearAllCheckFunc(){
 	
@@ -68,20 +67,34 @@ function clearAllCheckFunc(){
 */
 	
 
+
 	//allCheckFunc 이벤트 처리함수 생성(전체선택)
 function allCheckFunc(){
 	console.log(this.checked);
 	document.querySelectorAll('tbody#memberList tr').forEach(item => item.children[5].children[0].checked = this.checked);
 	
-	/*
-	document.querySelectorAll('#memberList tr').forEach(item => item.children[5].children[0].checked = this.checked);
+		/*
+		'tbody#memberList tr' 는 querySelectorAll로 선택했기때문에 배열의 형태이다
+		forEach 문을 사용에 해당 배열을 순회한다 + 화살표함수 (익명함수) 와 함께 사용
+		
+		item 은 요소가 된다 forEach(function(배열요소 = item,인덱스,배열){});
+			화살표함수 사용방법
+				(파라미터) => {
+					return 리턴값 
+				}
+				
+				(파라미터) => 리턴값 *단일표현식일 경우 return생략이 가능함
+			
+			* 화살표함수는 객체를 생성할 수 없다
+			* 화살표 함수는 익명함수이다 (이름이 없다)
+			
+		forEach(item => ) *item을 파라미터로 받고, this.checked를 item에 대입한다
+		(여기서 this는 item 이 아님 왜냐하면 화살표함수는 객체 생성이 불가능하기때문, this 는 이벤트 대상인 'thead input[type="checkbox"]'가 된다)
+		
+		*/
 	
-	let a = 3+1;
-	'tbody#memberList tr' 에 있는 
-	const item = (item.child) {
-		return item.children[5].children[0].checked = this.checked
-	}
-	*/
+	
+
 	
 }
 
