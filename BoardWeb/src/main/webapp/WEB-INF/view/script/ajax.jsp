@@ -164,7 +164,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <input type="hidden" id="modify_id">
       <p>이름 : <input type="text" id="modify_name"></p>
       <p>비밀번호 : <input type="text" id="modify_pass"></p>
-      <p><button it="modBtn">수정</button></p>
+      <p><button id="modBtn">수정</button></p>
     </div>
     <div class="modal-footer">
       <h3>Modal Footer</h3>

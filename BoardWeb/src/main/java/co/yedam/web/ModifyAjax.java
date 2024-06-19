@@ -28,10 +28,14 @@ public class ModifyAjax implements Control {
 		
 		BoardService svc = new BoardServiceImpl();
 		
-		if(svc.modifyMember(mvo)) { // {"retCode":"Modify Success"}
-			resp.getWriter().print("{\"retCode\":\"Modify Success\"}");
-		} else {  // {"retCode":"Modify Fail"}
-			resp.getWriter().print("{\"retCode\":\"Modify Fail\"}");
+		if(svc.modifyMember(mvo)) { // {"retCode":"Success"}
+			
+			resp.getWriter().print("{\"retCode\":\"Success\"}");
+			
+		} else {  // {"retCode":"Fail"}
+			
+			resp.getWriter().print("{\"retCode\":\"Fail\"}");
+			
 		}
 		
 		

@@ -11,7 +11,7 @@ xthp.open('get', 'memberAjax.do');
 xthp.send();
 
 xthp.onload = function (){
-	console.log(xthp);
+	//console.log(xthp);
 	let data = JSON.parse(xthp.responseText);
 	//console.log(data);
 	data.forEach(user => {
@@ -35,10 +35,12 @@ function makeRow(obj = {}){ //파라미터로 어떤 형태로 기재를 해도 
 		document.getElementById('myModal').style.display = 'block';	
 		
 		//선택된 사용자의 이름, 비밀번호를 모달에 출력.
-		console.log(e, this);
+		//console.log(e, this);
 		document.getElementById('modify_name').value = this.children[1].innerHTML;
 		document.getElementById('modify_pass').value = this.children[2].innerHTML;
 		document.getElementById('modify_id').value = this.children[0].innerHTML;
+		
+		document.getElementById('modBtn').addEventListener('click', modifyMemberFunc);
 		
 	}) ////tr더블클릭 시 모달 창 출력 end
 	
@@ -86,35 +88,62 @@ function makeRow(obj = {}){ //파라미터로 어떤 형태로 기재를 해도 
 
 
 //수정이벤트
-document.getElementById('modBtn').addEventListener('click', function(){
+function modifyMemberFunc(){
+	
+	let targetTr = document.getElementById('id'); //user01 -> #user01
+	
+	//입력화면의 회원아이디값을 가져와서 변수에 저장
+	let name = document.getElementById('modify_name').value;
+	let pass = document.getElementById('modify_pass').value;
+	let id = document.getElementById('modify_id').value;
+	let auth = document.getElementById('auth').value;
+	
+	/*
+	
 	let id = document.getElementById('modify_id').value;
 	let name = document.getElementById('modify_name').value;
 	let pass = document.getElementById('modify_pass').value;
+	let auth = document.getElementById('auth').value;
+	*/
 	
 	//ajax 생성
 	const modAjx = new XMLHttpRequest();
-	let url = 'modifyAjax.do?nm='+name+'&pw='+pass
-	modAjx.open('get', url);
+	let url5 = 'modifyAjax.do?nm='+name+'&pw='+pass+'&id='+id
+	modAjx.open('get', url5);
 	modAjx.send()
 	modAjx.onload = function(){
-		
-		let result = JSON
+	
+	
+	if(targetTr==id){
+		targetTr.children[1].innerHTML = name; //수정된이름
+		targetTr.children[2].innerHTML = pass; //수정된 비밀번호
+	}
+
+		let result = JSON.parse(modAjx.responseText);
+		if(result.retCode = 'Success'){
+			let newMem = {userId: id, userName: name, userPw: pass, responsibility: auth};
+			document.getElementById('list').appendChild(makeRow(newMem));
+			alert("수정완료");
+			document.getElementById('myModal').style.display = 'none';
+			
+		} else {
+			alert("수정실패");
+		}
 		
 	}
 	
-	let targetTr = document.getElementById('id'); //
-	targetTr.children[1].innerHTML = name;
-	targetTr.children[2].innerHTML = pass;
+	
+	/*
+	let targetTr = document.getElementById('id'); //user01 -> #user01
+	targetTr.children[1].innerHTML = name; //수정된이름
+	targetTr.children[2].innerHTML = pass; //수정된 비밀번호
 	
 	
 	//모달창 닫기
 	document.getElementById('myModal').style.display = 'none';
+	*/
 	
-	
-	
-	
-	})
-	
+}
 	
 
 
