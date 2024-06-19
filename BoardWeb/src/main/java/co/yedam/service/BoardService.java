@@ -38,5 +38,18 @@ public interface BoardService {
 	MemberVO2 checkMember(String id, String pw);
 	
 	
+	
+	//ajax연습
+	List<MemberVO2> memberList();
+	
+	boolean addMemberAjax(MemberVO2 mvo);
+	
+	
+	boolean checkMemberId(String id);
+	
+	boolean deleteMemberId(String id);
+	//수정
+	boolean modifyMember(MemberVO2 mvo);
+	
 
 }

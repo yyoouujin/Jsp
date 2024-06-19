@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import co.yedam.common.Control;
 import co.yedam.web.AddBoard;
 import co.yedam.web.AddStudent;
+import co.yedam.web.AjaxForm;
 import co.yedam.web.BoardList;
+import co.yedam.web.CheckIdAjax;
 import co.yedam.web.GetBoard;
 import co.yedam.web.JoinControl;
 import co.yedam.web.JoinForm;
@@ -21,10 +23,14 @@ import co.yedam.web.LoginControl;
 import co.yedam.web.LoginForm;
 import co.yedam.web.LogoutControl;
 import co.yedam.web.MainControl;
+import co.yedam.web.MemberAddAjax;
+import co.yedam.web.MemberAjax;
 import co.yedam.web.MemberList;
+import co.yedam.web.ModifyAjax;
 import co.yedam.web.ModifyBoard;
 import co.yedam.web.ModifyForm;
 import co.yedam.web.ProductControl;
+import co.yedam.web.RemoveIdAjax;
 import co.yedam.web.ScriptForm;
 import co.yedam.web.StudentForm;
 import co.yedam.web.addForm;
@@ -91,6 +97,22 @@ public class FrontController extends HttpServlet {
 		
 		//자바스크립트 연습용 페이지
 		map.put("/script.do", new ScriptForm());
+		
+		
+		
+		//아작스 연습
+		map.put("/ajax.do", new AjaxForm());
+		//JSON문자열을 반환하는 컨트롤러
+		map.put("/memberAjax.do", new MemberAjax());
+		//데이터 등록 (ajax)
+		map.put("/addAjax.do", new MemberAddAjax());
+		//id체크
+		map.put("/checkIdAjax.do", new CheckIdAjax());
+		//삭제
+		map.put("/removeIdAjax.do", new RemoveIdAjax());
+		//수정
+		map.put("/modifyAjax.do", new ModifyAjax());
+		
 
 	}
 

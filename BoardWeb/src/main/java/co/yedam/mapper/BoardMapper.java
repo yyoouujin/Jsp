@@ -42,6 +42,17 @@ public interface BoardMapper {
 	
 	
 	
+	//서버에 있는 데이터를 끌고오기위함(ajax연습)
+	List<MemberVO2> memberList();
+	
+	int insertMemberAjax(MemberVO2 mvo);
+	
+	int selectMemberAjax(String id);
+	
+	int deleteMemberAjax(String id);
+	
+	//수정
+	int updateMemberAjax(MemberVO2 mvo);
 	
 
 }
