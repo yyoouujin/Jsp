@@ -96,7 +96,7 @@ function modifyMemberFunc(){
 	let name = document.getElementById('modify_name').value;
 	let pass = document.getElementById('modify_pass').value;
 	let id = document.getElementById('modify_id').value;
-	let auth = document.getElementById('auth').value;
+	let auth = document.getElementById('auth').value; //목록 출력하려고 추가함
 	
 	/*
 	

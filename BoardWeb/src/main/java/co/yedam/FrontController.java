@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.common.Control;
 import co.yedam.web.AddBoard;
+import co.yedam.web.AddReply;
 import co.yedam.web.AddStudent;
 import co.yedam.web.AjaxForm;
 import co.yedam.web.BoardList;
@@ -31,6 +32,8 @@ import co.yedam.web.ModifyBoard;
 import co.yedam.web.ModifyForm;
 import co.yedam.web.ProductControl;
 import co.yedam.web.RemoveIdAjax;
+import co.yedam.web.RemoveReply;
+import co.yedam.web.ReplyList;
 import co.yedam.web.ScriptForm;
 import co.yedam.web.StudentForm;
 import co.yedam.web.addForm;
@@ -112,6 +115,16 @@ public class FrontController extends HttpServlet {
 		map.put("/removeIdAjax.do", new RemoveIdAjax());
 		//수정
 		map.put("/modifyAjax.do", new ModifyAjax());
+		
+		
+		//댓글관련 (maven - gson pom.xml에디펜던시 추가 : 구글 라이브러리)
+		//댓글목록
+		map.put("/replyListJson.do", new ReplyList());
+		//댓글삭제
+		map.put("/removeReply.do", new RemoveReply());
+		//댓글등록
+		map.put("/addReply.do", new AddReply());
+		
 		
 
 	}
