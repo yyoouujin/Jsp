@@ -1,17 +1,18 @@
 /**
 replyService.js
 목록, 단건, 등록, 삭제
+replyService.js에서 기능을 만들어놓고 reply.js에서 호출에서 사용
 */
 
 const svc = {
 	
 	//목록
-	replyList(bno=1, successCall) {
+	replyList(param = { bno: 1, page: 1 }, successCall) { //param = { bno: 1, page: 1 }
 		//매개값으로 board.jsp에 지정된 bno 를 사용한다
 		//매개값으로 successCall 이라는 함수를 받는다 (콜백함수)
 		// 콜백함수 : 어떠한 조건이 되면 실행하는 함수
 		const xhtp = new XMLHttpRequest();
-		let url='replyListJson.do?bno='+bno;
+		let url='replyListJson.do?bno='+param.bno + '&page=' + param.page;
 		xhtp.open('get',url);
 		xhtp.send();
 		xhtp.onload	= successCall;
@@ -47,6 +48,14 @@ const svc = {
 		xhtp.send();
 		xhtp.onload = successCall;
 
+	},
+	
+	
+	replyTotalCnt(bno = 1, successCall){
+		const xhtp = new XMLHttpRequest();
+		xhtp.open('get', 'replyTotalCnt.do?bno='+bno);	
+		xhtp.send();
+		xhtp.onload = successCall;
 	}
 	
 }

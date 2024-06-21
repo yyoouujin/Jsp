@@ -22,10 +22,15 @@ public class ReplyList implements Control {
 		// 몇번글에 대한 목록?
 		resp.setContentType("text/json;charset=utf-8"); //한글처리
 		String bno = req.getParameter("bno");
+		String page = req.getParameter("page");
+		
+		page = page ==null ? "1" : page;
 		
 		//댓글목록
 		ReplyService svc = new ReplyServiceImpl();
-		List<ReplyVO> list = svc.replyList(Integer.parseInt(bno));
+		//List<ReplyVO> list = svc.replyList(Integer.parseInt(bno));
+		List<ReplyVO> list = svc.replyList(Integer.parseInt(bno), Integer.parseInt(page));
+		
 		
 		//gson 객체추가 (Gson 디펜던시 추가) : JSON문자열을 반환해준다
 		//Gson gson = new GsonBuilder().create(); //gson객체생성

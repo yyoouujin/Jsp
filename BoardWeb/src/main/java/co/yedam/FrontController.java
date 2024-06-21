@@ -31,11 +31,13 @@ import co.yedam.web.ModifyAjax;
 import co.yedam.web.ModifyBoard;
 import co.yedam.web.ModifyForm;
 import co.yedam.web.ProductControl;
+import co.yedam.web.PublicData;
 import co.yedam.web.RemoveIdAjax;
 import co.yedam.web.RemoveReply;
 import co.yedam.web.ReplyList;
 import co.yedam.web.ScriptForm;
 import co.yedam.web.StudentForm;
+import co.yedam.web.TotalCnt;
 import co.yedam.web.addForm;
 import co.yedam.web.removeBoard;
 import co.yedam.web.removeForm;
@@ -124,6 +126,14 @@ public class FrontController extends HttpServlet {
 		map.put("/removeReply.do", new RemoveReply());
 		//댓글등록
 		map.put("/addReply.do", new AddReply());
+		
+		//댓글전체건수
+		map.put("/replyTotalCnt.do", new TotalCnt());
+		
+		
+		
+		//공공데이터포털
+		map.put("/publicData.do", new PublicData());
 		
 		
 

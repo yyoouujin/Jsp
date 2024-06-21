@@ -14,13 +14,19 @@ public class AppTest {
 		SqlSessionFactory sqlSessionFactory = DataSource.getInstance();
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		
+		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
+		mapper.selectListPaging(227,6).forEach(reply-> System.out.println(reply));
+		
+		
+		
+		
 		
 		//interface - 구현객체.
 //		StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
 		
 		
-		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
-		mapper.deleteReply(5);
+		//ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
+		//mapper.deleteReply(5);
 		//mapper.selectList(5).forEach(reply-> System.out.println(reply));
 		
 		
