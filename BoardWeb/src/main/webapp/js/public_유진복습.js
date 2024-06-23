@@ -122,6 +122,7 @@ function findAddress() {
 		result.data.forEach(center => {
 			if (center.sido.indexOf(select)!=-1){ //해당 검색어가 있으면
 				if(center.address.indexOf(search)!=-1){
+					console.log(center.address); //검색후 걸러지는 주소들
 					target.appendChild(makeRow(center));
 				}
 			}
