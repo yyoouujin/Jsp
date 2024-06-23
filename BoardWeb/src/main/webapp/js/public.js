@@ -44,6 +44,12 @@ fetch(url)
 // 	});
 // });
 
+fetch(url).then(result => result.json()).then(result => {
+	console.log('객체는 이렇게 생겼어요');
+	console.log(result.data);
+	console.log('객체 확인용');
+})
+
 
 // 1) 목록 출력하기
 const fields = ['id', 'centerName', 'phoneNumber', 'address'];
@@ -72,7 +78,7 @@ function makeSelectBox () {
 	.then(result => {
 		let sidoArr = [];
 		result.data.forEach(center => {
-			console.log(sidoArr);
+			//console.log(sidoArr);
 			if(sidoArr.indexOf(center.sido) == -1) { //sidoArr에 없으면 추가!
 				sidoArr.push(center.sido);
 				let option = document.createElement('option');
@@ -90,6 +96,7 @@ makeSelectBox();
 
 
 
+/*
 // 2) 주소검색 기능
 
 document.querySelector('#findBtn').addEventListener('click', findAddress);
@@ -101,7 +108,6 @@ function findAddress() {
 	then(result => result.json()).
 	then(result => {
 		//result.data -> 이게 객체임, 
-		console.log(result.data);
 		result.data.forEach(center => {
 			if(center.address.indexOf(searchBox)!=-1){ //검색내용이 존재하지 않으면 의 반대
 				target.appendChild(makeRow(center));
@@ -110,7 +116,8 @@ function findAddress() {
 		//document.querySelector('#search').value = ''; //검색부분을 지워줌
 	});
 
-	}
+}
+*/
 
 
 
@@ -136,4 +143,29 @@ function findSelectAddress() {
 
 
 
+
+// 4) 주소검색 기능 심화
+
+document.querySelector('#findBtn').addEventListener('click', findAddress);
+
+
+function findAddress() {
+	let searchBox = document.querySelector('#search').value; //검색하고자하는내용
+	let selectAddress = document.querySelector('#searchList').value; //셀렉트박스의값
+	target.innerHTML=''; //tbody내의 값들을 다 지워줌
+	fetch(url).
+	then(result => result.json()).
+	then(result => {
+		//result.data -> 이게 객체임, 
+		result.data.forEach(center => {
+			if(center.address.indexOf(searchBox)!=-1){ //검색내용이 존재하지 않으면 의 반대
+				if(center.sido.indexOf(selectAddress)!=-1){ //
+					target.appendChild(makeRow(center));
+				}
+			}
+		});
+		//document.querySelector('#search').value = ''; //검색부분을 지워줌
+	});
+
+}
 
