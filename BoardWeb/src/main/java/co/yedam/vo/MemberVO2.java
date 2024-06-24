@@ -11,6 +11,8 @@ public class MemberVO2 {
 	private String userName;
 	private String responsibility;
 	
+	//파일전송
+	private String image;
 	
 
 }

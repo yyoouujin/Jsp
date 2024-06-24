@@ -6,6 +6,7 @@ let url = "https://api.odcloud.kr/api/15077586/v1/centers?page=1&perPage=284&ser
 const target = document.querySelector('#centerList');
 
 
+
 /*
 const xhtp = new XMLHttpRequest();
 xhtp.open('get', url);
@@ -56,6 +57,14 @@ const fields = ['id', 'centerName', 'phoneNumber', 'address'];
 
 function makeRow(center = {}) {
 	let tr = document.createElement('tr');
+	
+	//5) tr클릭 시 맵 정보 출력
+	tr.addEventListener('click', function(){
+		//location.href = "map.do?x="+center.lat+"&y="+center.lng;
+		window.open("map.do?x="+center.lat+"&y="+center.lng+"&cnm="+center.centerName.replace('코로나19',' '));
+		
+	});
+	
 	fields.forEach((field, index) => {
 		let td = document.createElement('td');
 		td.innerHTML = center[field];
@@ -88,7 +97,7 @@ function makeSelectBox () {
 			}
 		});
 		
-	});
+	}).catch(err => console.log(err));
 	// return option; -> 이미 다 됐ㅇ기때문에 필요 x
 }
 
@@ -167,5 +176,43 @@ function findAddress() {
 		//document.querySelector('#search').value = ''; //검색부분을 지워줌
 	});
 
+}
+
+
+
+//------------------- [promise 객체]
+
+//6) 센터정보 생성.
+document.getElementById('centerDB').addEventListener('click', createCenterInfo);
+
+
+function createCenterInfo() {
+	//1.openAPI호출.(fetch사용)
+		//fetch는 promise타입으로 결과를 반환해줌, 그래서 then메소드 사용이 가능하다
+	fetch(url)
+	.then(result => result.json())
+	.then(result => {
+		let centers = result.data; //배열의 형태(객체) [{},{},...] => JSON문자열 타입으로 변환 [{"id":"yujin",...}]
+		return fetch('centerInfo.do', {//전달해야하는값까지기재
+			method: 'post',//전달내용이 많을 때 post 사용, 전달되는 값이 body영역에 저장 ('get'방식은 헤드에 저장)
+			headers: {'Content-Type': "application/json"}, //"application/x-www", -> 키=값&키=값
+			body: JSON.stringify(centers) //객체->JSON문자열
+		})
+	})
+	.then(result => result.json())
+	.then(result => {
+		console.log(result);
+		if(result.txnCnt > 0){
+			alert(result.txnCnt + '건 처리 성공');
+		} else {
+			alert('실패');
+		}
+	})
+	.catch(err => console.log(err));
+	//2.컨트롤 호출 DB입력.
+	
+	
+	
+	
 }
 

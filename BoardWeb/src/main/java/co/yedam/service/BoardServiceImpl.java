@@ -8,6 +8,7 @@ import co.yedam.common.DataSource;
 import co.yedam.common.SearchVO;
 import co.yedam.mapper.BoardMapper;
 import co.yedam.vo.BoardVO;
+import co.yedam.vo.MemberVO;
 import co.yedam.vo.MemberVO2;
 
 /*
@@ -96,6 +97,12 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public boolean modifyMember(MemberVO2 mvo) {
 		return mapper.updateMemberAjax(mvo)==1;
+	}
+	
+	
+	@Override
+	public boolean addMemberImage(MemberVO mvo) {
+		return mapper.insertMember(mvo) == 1;
 	}
 
 	}

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import co.yedam.common.SearchVO;
 import co.yedam.vo.BoardVO;
+import co.yedam.vo.MemberVO;
 import co.yedam.vo.MemberVO2;
 
 /*
@@ -53,6 +54,12 @@ public interface BoardMapper {
 	
 	//수정
 	int updateMemberAjax(MemberVO2 mvo);
+	
+	
+	//파일전송
+	int insertMember(MemberVO mvo);
+	
+	
 	
 
 }

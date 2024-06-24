@@ -9,7 +9,7 @@
 <body>
 <p>회원가입 페이지</p>
 
-<form name="myFrm" action="join.do">
+<form name="myFrm" action="join.do" method="post" enctype="multipart/form-data">
 	
 	<table class="table">
 	
@@ -22,8 +22,15 @@
 	<tr>
 		<th>비밀번호</th><td><input type="password" name="pw"></td>
 	</tr>
+	
 	<tr>
-		<td><input type="submit" class="btn btn-primary" value="회원가입"></td>
+		<th>이미지</th>
+		<td><input class="form-control" type="file" name="myImage"></td>
+	</tr>
+			
+			
+	<tr align="center">
+		<td colspan="2"><input type="submit" value="등록" class="btn btn-primary"></td>
 	</tr>
 	
 	</table>

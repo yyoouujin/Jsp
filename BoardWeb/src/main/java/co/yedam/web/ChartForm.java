@@ -8,17 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.common.Control;
 
-public class JoinForm implements Control {
+public class ChartForm implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		//req.getRequestDispatcher("WEB-INF/view/joinForm.jsp").forward(req, resp);
-		req.getRequestDispatcher("member/joinForm.tiles").forward(req, resp);
-		
-		
-
+		req.getRequestDispatcher("script/chart.tiles").forward(req, resp);
 	}
 
 }

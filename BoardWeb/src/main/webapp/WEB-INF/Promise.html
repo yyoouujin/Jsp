@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<p>Promise객체</p>
+
+<script>
+  //Promise : 주로 서버에서 받아온 데이터를 화면에 표시할 때 사용
+
+  async function promiseFunc(){
+    
+    //promise객체는 두가지 인자를 받는다.
+    //resolve : 성공 시 실행할 함수, reject : 실패 시 실행할 함수
+    new Promise((resolve, reject) => { 
+      setTimeout(function(){ // 매개값은 함수, 지연시간
+        //resolve('OK');
+        reject('Fail');
+      }, 1000); 
+    })
+    .then(function(result){
+      console.log(result);
+    })
+    .catch(function(err){
+      console.log('err:',err);
+    });
+
+
+    //promise
+    //.then()//성공 시 실행
+    //.catch();//실패 시 실행
+
+    // promise
+    // .then(function(result){
+    //   console.log(result);
+    // })
+    // .catch(function(err){
+    //   console.log(err);
+    // });
+
+
+
+  }
+
+
+promiseFunc();
+
+
+
+</script>
+</body>
+</html>

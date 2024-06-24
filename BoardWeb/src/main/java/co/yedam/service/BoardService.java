@@ -4,6 +4,7 @@ import java.util.List;
 
 import co.yedam.common.SearchVO;
 import co.yedam.vo.BoardVO;
+import co.yedam.vo.MemberVO;
 import co.yedam.vo.MemberVO2;
 
 /*
@@ -41,15 +42,19 @@ public interface BoardService {
 	
 	//ajax연습
 	List<MemberVO2> memberList();
-	
 	boolean addMemberAjax(MemberVO2 mvo);
-	
-	
 	boolean checkMemberId(String id);
-	
 	boolean deleteMemberId(String id);
 	//수정
 	boolean modifyMember(MemberVO2 mvo);
+	
+	
+	
+	//파일첨부 회원등록
+	boolean addMemberImage(MemberVO mvo);
+	
+	
+
 	
 
 }
