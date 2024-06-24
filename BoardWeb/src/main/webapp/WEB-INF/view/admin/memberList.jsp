@@ -8,7 +8,7 @@
 
 <ul>
 	<c:forEach var="member" items="${memberList }">
-		<li> id: ${member.userId }  <img width='200px' src='imgaes/${member.image }'>
+		<li> id: ${member.userId }  <img width='200px' src='images/${member.image }'>
 		</li>
 	</c:forEach>
 </ul>
