@@ -62,6 +62,7 @@ public class FrontController extends HttpServlet {
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
+		
 		map.put("/main.do", new MainControl()); // "/main.do" -> 키 역할 / MainControl객체반환
 		map.put("/product.do", new ProductControl());
 		// map.put("/board.do", "게시판페이지입니다.");

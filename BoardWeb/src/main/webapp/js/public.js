@@ -182,7 +182,7 @@ function findAddress() {
 
 //------------------- [promise 객체]
 
-//6) 센터정보 생성.
+//6) 센터정보 생성. (JSON데이터 업로드 : https://developer.mozilla.org/ko/docs/Web/API/Fetch_API/Using_Fetch#json_%EB%8D%B0%EC%9D%B4%ED%84%B0_%EC%97%85%EB%A1%9C%EB%93%9C)
 document.getElementById('centerDB').addEventListener('click', createCenterInfo);
 
 
@@ -211,8 +211,6 @@ function createCenterInfo() {
 	.catch(err => console.log(err));
 	//2.컨트롤 호출 DB입력.
 	
-	
-	
-	
 }
+
 

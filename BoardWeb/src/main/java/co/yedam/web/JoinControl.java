@@ -57,10 +57,26 @@ public class JoinControl implements Control {
 		
 		
 		BoardService bvc = new BoardServiceImpl();
-		if(bvc.addMemberImage(mem)) {
-			resp.sendRedirect("memberList.do");
+		
+		try {
+			
+			if(bvc.addMemberImage(mem)) {
+				if(req.getMethod().equals("POST")) {
+					resp.sendRedirect("memberList.do");
+				} else if (req.getMethod().equals("PUT")) {
+					//{"retCode": "OK"}
+					resp.getWriter().print("{\"retCode\": \"OK\"}");
+				}
+			}
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (req.getMethod().equals("PUT")) {
+			//{"retCode": "NG"}
+			resp.getWriter().print("{\"retCode\": \"NG\"}");
 		}
 		
+		}	
 		
 		/*
 		if(svc.addMember(mem)) {
@@ -75,5 +91,6 @@ public class JoinControl implements Control {
 	
 
 	}
+	
 
 }

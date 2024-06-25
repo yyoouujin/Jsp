@@ -126,6 +126,7 @@
 	select *
 	from member_tbl
 	</select>
+	
 
 
 	<insert id="insertMemberAjax" parameterType="co.yedam.vo.MemberVO2">
@@ -154,7 +155,6 @@
 	  set user_name=#{userName}, user_pw=#{userPw}
 	  where user_id=#{userId}
 	</update>
-	
 	
 	
 	<insert id="insertMember" parameterType="co.yedam.vo.MemberVO">

@@ -4,25 +4,27 @@ ajax3.js
 
 
 //목록 가져오기
-
-const xthp = new XMLHttpRequest();
-xthp.open('get', 'memberAjax.do');
-
-xthp.send();
-
-xthp.onload = function (){
-	//console.log(xthp);
-	let data = JSON.parse(xthp.responseText);
-	//console.log(data);
-	data.forEach(user => {
-		document.getElementById('list').appendChild(makeRow(user));
-	})
+function showList() {
+	const xthp = new XMLHttpRequest();
+	xthp.open('get', 'memberAjax.do');
+	
+	xthp.send();
+	
+	xthp.onload = function (){
+		//console.log(xthp);
+		let data = JSON.parse(xthp.responseText);
+		//console.log(data);
+		data.forEach(user => {
+			document.getElementById('list').appendChild(makeRow(user));
+		})
+	}
 }
+
+showList();
+
 
 //json문자열의 필드이름을 출력
 const fields = ['userId', 'userName', 'userPw', 'responsibility'];
-
-
 
 function makeRow(obj = {}){ //파라미터로 어떤 형태로 기재를 해도 상관없으나, 보기 편하라고 풀어서 기재해줌 (obj)로 적어도 무방
 
@@ -45,7 +47,7 @@ function makeRow(obj = {}){ //파라미터로 어떤 형태로 기재를 해도 
 	}) ////tr더블클릭 시 모달 창 출력 end
 	
 	
-	
+	//삭제버튼만들기
 	let btn=document.createElement('button');
 		btn.innerText="삭제";
 		btn.setAttribute('delId', obj.userId); //data-붙인건 
@@ -65,8 +67,6 @@ function makeRow(obj = {}){ //파라미터로 어떤 형태로 기재를 해도 
 		td.innerHTML = obj[field];
 		tr.appendChild(td);
 		
-		
-		
 		/*
 			//체크박스 생성
 			td = document.createElement('td');
@@ -77,34 +77,32 @@ function makeRow(obj = {}){ //파라미터로 어떤 형태로 기재를 해도 
 	
 		*/
 		
-		
 	})
 	tr.appendChild(btn);
 	
 	
 	return tr;
 	
-}
+} //end makeRow메소드
 
 
 //수정이벤트
-function modifyMemberFunc(){
-	
-	let targetTr = document.getElementById('id'); //user01 -> #user01
+function modifyMemberFunc(){	
 	
 	//입력화면의 회원아이디값을 가져와서 변수에 저장
 	let name = document.getElementById('modify_name').value;
 	let pass = document.getElementById('modify_pass').value;
 	let id = document.getElementById('modify_id').value;
-	let auth = document.getElementById('auth').value; //목록 출력하려고 추가함
+	//let auth = document.getElementById('auth').value; //목록 출력하려고 추가함
 	
-	/*
+	let targetTr = document.getElementById(id); //user01 -> #user01
 	
-	let id = document.getElementById('modify_id').value;
-	let name = document.getElementById('modify_name').value;
-	let pass = document.getElementById('modify_pass').value;
-	let auth = document.getElementById('auth').value;
-	*/
+	console.log(targetTr);
+	targetTr.children[1].innerText = name; //수정된이름
+	targetTr.children[2].innerHTML = pass; //수정된 비밀번호
+	//if(targetTr==id){
+		
+	//}
 	
 	//ajax 생성
 	const modAjx = new XMLHttpRequest();
@@ -112,20 +110,13 @@ function modifyMemberFunc(){
 	modAjx.open('get', url5);
 	modAjx.send()
 	modAjx.onload = function(){
-	
-	
-	if(targetTr==id){
-		targetTr.children[1].innerHTML = name; //수정된이름
-		targetTr.children[2].innerHTML = pass; //수정된 비밀번호
-	}
 
 		let result = JSON.parse(modAjx.responseText);
 		if(result.retCode = 'Success'){
-			let newMem = {userId: id, userName: name, userPw: pass, responsibility: auth};
-			document.getElementById('list').appendChild(makeRow(newMem));
+			//let modMem = {userId: id, userName: name, userPw: pass, responsibility: auth};
+			//document.getElementById('list').appendChild(makeRow(modMem));
 			alert("수정완료");
 			document.getElementById('myModal').style.display = 'none';
-			
 		} else {
 			alert("수정실패");
 		}
@@ -147,8 +138,56 @@ function modifyMemberFunc(){
 	
 
 
-//등록버튼 이벤트 추가 addBtn에다가!
-document.getElementById('addBtn').addEventListener('click', function(){
+//등록버튼 이벤트 추가 addBtn에다가!(fetch사용)
+document.getElementById('addBtn').addEventListener('click', function() {
+	
+	const formData = new FormData(); //form-Data처리
+	const fileField = document.querySelector('#myPic');
+	
+	formData.append("id", document.getElementById('uid').value);
+	formData.append("pw", document.getElementById('upw').value);
+	formData.append("name", document.getElementById('uname').value);
+	formData.append("myImage", fileField.files[0]); //
+	
+	upload(formData);
+	
+	let id = document.getElementById('uid').value;
+	let pw = document.getElementById('upw').value;
+	let name = document.getElementById('uname').value;
+	let auth = document.getElementById('auth').value;
+	
+	let newMem = {userId: id, userName: name, userPw: pw, responsibility: auth};
+	//let image = document.getElementById('myPic')
+	document.getElementById('list').appendChild(makeRow(newMem));
+	
+	
+})
+
+	
+//fetch파일 업로드
+async function upload(formData) {
+  try {
+    const response = await fetch("join.do", {
+      method: "PUT",
+      body: formData,
+    });
+    const result = await response.json();
+    console.log("성공:", result);
+    
+  } catch (error) {
+    console.error("실패:", error);
+  }
+} //end of upload(formData)
+
+
+
+
+
+
+
+//등록버튼 이벤트 추가 addBtn에다가! (기존)
+function addMemberFunc() {
+
 	let id = document.getElementById('uid').value;
 	let pw = document.getElementById('upw').value;
 	let nm = document.getElementById('uname').value;
@@ -174,7 +213,8 @@ document.getElementById('addBtn').addEventListener('click', function(){
 		
 	}
 	
-})
+} //end of addMemberFunc
+
 
 
 //아이디가 존재하는지 체크이벤트
@@ -202,12 +242,6 @@ document.getElementById('uid').addEventListener('change', function(){
 
 
 
-
-
-
-	
-	
-	
 /*
 	function del () {
 		

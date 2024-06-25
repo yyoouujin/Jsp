@@ -13,25 +13,22 @@
 	
 	<table class="table">
 	
-	<tr>
-		<th>이름</th><td><input type="text" name="name"></td>
-	</tr>
-	<tr>
-		<th>아이디</th><td><input type="text" name="id"></td>
-	</tr>
-	<tr>
-		<th>비밀번호</th><td><input type="password" name="pw"></td>
-	</tr>
-	
-	<tr>
-		<th>이미지</th>
-		<td><input class="form-control" type="file" name="myImage"></td>
-	</tr>
-			
-			
-	<tr align="center">
-		<td colspan="2"><input type="submit" value="등록" class="btn btn-primary"></td>
-	</tr>
+		<tr>
+			<th>이름</th><td><input type="text" name="name"></td>
+		</tr>
+		<tr>
+			<th>아이디</th><td><input type="text" name="id"></td>
+		</tr>
+		<tr>
+			<th>비밀번호</th><td><input type="password" name="pw"></td>
+		</tr>
+		
+		<tr>
+			<th>이미지</th><td><input class="form-control" type="file" name="myImage"></td>
+		</tr>
+		<tr align="center">
+			<td colspan="2"><input type="submit" value="등록" class="btn btn-primary"></td>
+		</tr>
 	
 	</table>
 </form>
